@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "${description}",
+    "authors": [
+        "ElocinDev"
+    ],
+    "license": "MIT",
+    "icon": "assets/necronomicon/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "elocindev.necronomicon.CommonInitializer"            
+        ]
+    },
+    "mixins": [
+        "${mod_id}-common.mixins.json"
+    ],
+    "depends": {
+        "fabric": "*",
+        "fabricloader": ">=0.15.0",
+        "java": ">=16"
+    }
+}
