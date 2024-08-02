@@ -1,6 +1,6 @@
 package elocindev.necronomicon.datagen;
 
-//#if FABRIC==1
+//? if fabric {
 import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -32,9 +32,9 @@ import net.minecraft.world.level.block.state.properties.StairsShape;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-//#endif
+//? }
 
-//#if FABRIC==1
+//? if fabric {
 public class ModelGenerator extends FabricModelProvider {
     public ModelGenerator(FabricDataOutput output) {
         super(output);
@@ -162,7 +162,4 @@ public class ModelGenerator extends FabricModelProvider {
         modelCollector.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(parentModelId));
     }
 }
-//#else
-//$$ public class ModelGenerator {
-//$$ }
-//#endif
+//? } else {

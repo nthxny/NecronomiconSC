@@ -8,22 +8,17 @@ import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
 //? if fabric {
 import net.fabricmc.api.ModInitializer;
-//?} elif forge {
-//$$ import net.minecraftforge.fml.common.Mod;
-//$$ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-//$$ import net.minecraftforge.eventbus.api.SubscribeEvent;
-//#elif NEOFORGE==1
-//$$ import net.neoforged.fml.common.Mod;
-//$$ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-//$$ import net.neoforged.eventbus.api.SubscribeEvent;
-//#endif
+//? }
 
-//#if FORGE==1
-//$$ @Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//$$ @Mod(CommonInitializer.MODID)
-//$$ public class CommonInitializer {
-//#else
-public class CommonInitializer implements ModInitializer {
+//? if forge {
+/*
+@Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(CommonInitializer.MODID)
+public class CommonInitializer {
+*/
+//else
+public class CommonInitializer implements ModInitializer
+{
 
     public static final String MODID = "necronomicon";
     public static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
@@ -31,13 +26,13 @@ public class CommonInitializer implements ModInitializer {
 
     public static final boolean ENABLE_EXAMPLES = false;
 
-    //#if FABRIC==1
+    //? if fabric {
     @Override
     public void onInitialize() {
         LOGGER.info("Necronomicon Initialized");
         init();
     }
-    //#endif
+    //? }
 
     /**
      * An example on how to register your custom config class.
@@ -64,11 +59,13 @@ public class CommonInitializer implements ModInitializer {
         }
     }
 
-    //#if FORGE==1
-    //$$ @SubscribeEvent
-    //$$ public void onCommonSetup(FMLCommonSetupEvent event) {
-    //$$     LOGGER.info("Necronomicon Initialized");
-    //$$     init();
-    //$$ }
-    //#endif
+    //? if forge {
+/*
+    @SubscribeEvent
+    public void onCommonSetup(FMLCommonSetupEvent event) {
+        LOGGER.info("Necronomicon Initialized");
+        init();
+    }
+    */
+//endif
 }

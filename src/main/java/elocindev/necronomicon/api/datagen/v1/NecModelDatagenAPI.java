@@ -1,6 +1,6 @@
 package elocindev.necronomicon.api.datagen.v1;
 
-//#if FABRIC==1
+//? if fabric {
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -38,7 +38,7 @@ import elocindev.necronomicon.datagen.ModelGenerator;
  */
 @Deprecated(since = "1.1.0", forRemoval = true)
 public class NecModelDatagenAPI {
-    //#if FABRIC==1
+    //? if fabric {
 
     /**
      *  Registers a basic generated item model.
@@ -306,4 +306,4 @@ public class NecModelDatagenAPI {
         ModelGenerator.registerParentedItemModel(buttonBlock, identifier3, modelCollector);
     }
 }
-//#endif
+//? }

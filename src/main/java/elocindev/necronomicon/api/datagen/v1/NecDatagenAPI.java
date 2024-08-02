@@ -1,6 +1,6 @@
 package elocindev.necronomicon.api.datagen.v1;
 
-//#if FABRIC==1
+//? if fabric {
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import com.google.gson.JsonElement;
 
 import elocindev.necronomicon.datagen.ModelGenerator;
-//#endif
+//? }
 
 public class NecDatagenAPI {
     
@@ -36,7 +36,7 @@ public class NecDatagenAPI {
      * @since   1.1.0
      */
     abstract class Model {
-        //#if FABRIC==1
+        //? if fabric {
 
         /**
          *  Registers a basic generated item model.
@@ -304,9 +304,10 @@ public class NecDatagenAPI {
             ModelGenerator.registerParentedItemModel(buttonBlock, identifier3, modelCollector);
         }
 
-        //#else
+        //? } else {
+/*
         
-        /**
+        /`
          *  Registers a basic generated item model.
          *  Experimental
          * 
@@ -319,13 +320,14 @@ public class NecDatagenAPI {
          * 
          * @author ElocinDev
          * @since 1.0.3
-        */
-        //$$ @Experimental
-        //$$ public static ItemModelBuilder makeItem(ItemModelProvider instance, RegistryObject<Item> item, String modid) {
-        //$$     return instance.withExistingParent(item.getId().getPath(),
-        //$$             new ResourceLocation("item/generated")).texture("layer0",
-        //$$             new ResourceLocation(modid,"item/" + item.getId().getPath()));
-        //$$ }
-        //#endif
+        `/
+        @Experimental
+        public static ItemModelBuilder makeItem(ItemModelProvider instance, RegistryObject<Item> item, String modid) {
+            return instance.withExistingParent(item.getId().getPath(),
+                    new ResourceLocation("item/generated")).texture("layer0",
+                    new ResourceLocation(modid,"item/" + item.getId().getPath()));
+        }
+        
+*/ //? }
     }
 }

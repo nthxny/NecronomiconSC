@@ -27,11 +27,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setStaticGradient(
-        //#if FABRIC==1
+        //? if fabric {
         MutableComponent text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif        
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? }        
     int color1, int color2) {
         text.setStyle(Styles.getStaticGradient(text, color1, color2).getStyle());
     }
@@ -47,11 +49,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setSlideGradient(
-        //#if FABRIC==1
+        //? if fabric {
         MutableComponent text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif       
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? }       
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getGradient(text, offset, color1, color2, tickrate).getStyle());
     }
@@ -69,11 +73,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setBreathingGradient(
-        //#if FABRIC==1
+        //? if fabric {
         MutableComponent text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif 
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? } 
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getBreathingGradient(text, offset, color1, color2, tickrate).getStyle());
     }
@@ -89,11 +95,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setRainbowGradient(
-        //#if FABRIC==1
+        //? if fabric {
         MutableComponent text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif 
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? } 
     int offset, float tickrate) {
         text.setStyle(Styles.getRainbowGradient(text, offset, tickrate).getStyle());
     }
@@ -102,11 +110,13 @@ public class TextAPI {
 
     public class Styles {
         public static MutableComponent getStaticGradient(
-            //#if FABRIC==1
+            //? if fabric {
             Component text,
-            //#else
-            //$$ Component text,
-            //#endif
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int color1, int color2) {
             var gradientColor = getEmptyText();
 
@@ -124,11 +134,13 @@ public class TextAPI {
 
         // Credits RXJpaw
         public static MutableComponent getGradient(
-            //#if FABRIC==1
+            //? if fabric {
             Component text,
-            //#else
-            //$$ Component text,
-            //#endif
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, int color1, int color2, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
 
@@ -146,11 +158,13 @@ public class TextAPI {
         }
 
         public static MutableComponent getBreathingGradient(
-            //#if FABRIC==1
+            //? if fabric {
             Component text,
-            //#else
-            //$$ Component text,
-            //#endif
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, int color1, int color2, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
 
@@ -171,11 +185,13 @@ public class TextAPI {
         }
 
         public static MutableComponent getRainbowGradient(
-            //#if FABRIC==1
+            //? if fabric {
             Component text,
-            //#else
-            //$$ Component text,
-            //#endif
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
             String string = text.getString();
@@ -194,16 +210,20 @@ public class TextAPI {
     }
 
     private static 
-        //#if FABRIC==1
+        //? if fabric {
         MutableComponent
-        //#else
-        //$$ MutableComponent
-        //#endif
+        //? } else {
+/*
+        MutableComponent
+        
+*/ //? }
     getEmptyText() {
-        //#if FABRIC==1
+        //? if fabric {
         return Component.empty();
-        //#else
-        //$$ return Component.empty();
-        //#endif
+        //? } else {
+/*
+        return Component.empty();
+        
+*/ //? }
     }
 }

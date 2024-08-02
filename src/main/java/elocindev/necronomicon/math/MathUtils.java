@@ -5,11 +5,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 
 public class MathUtils {
-    //#if FABRIC==1
+    //? if fabric {
     public static Vec3 getLookingVec(LivingEntity entity) {
-    //#else
-    //$$ public static Vec3 getLookingVec(LivingEntity entity) {
-    //#endif
+    //? } else {
+/*
+    public static Vec3 getLookingVec(LivingEntity entity) {
+    
+*/ //? }
         float yaw = entity.getYRot(); float pitch = entity.getXRot();
         
         float radian = 0.017453292F;
@@ -19,16 +21,18 @@ public class MathUtils {
         
         float m = Helper.sqrt(x * x + y * y + z * z);
 
-        //#if FABRIC==1
+        //? if fabric {
         return new Vec3(
-        //#else
-        //$$ return new Vec3(
-        //#endif
+        //? } else {
+/*
+        return new Vec3(
+        
+*/ //? }
             x/m, y/m, z/m);
     }
 
     private class Helper {
-        //#if FABRIC==1
+        //? if fabric {
         private static float sin(float f) {
             return Mth.sin(f);
         }
@@ -38,16 +42,18 @@ public class MathUtils {
         private static float sqrt(float f) {
             return Mth.sqrt(f);
         }
-        //#else
-        //$$ private static float sin(float f) {
-        //$$     return Mth.sin(f);
-        //$$ }
-        //$$ private static float cos(float f) {
-        //$$     return Mth.cos(f);
-        //$$ }
-        //$$ private static float sqrt(float f) {
-        //$$     return Mth.sqrt(f);
-        //$$ }
-        //#endif
+        //? } else {
+/*
+        private static float sin(float f) {
+            return Mth.sin(f);
+        }
+        private static float cos(float f) {
+            return Mth.cos(f);
+        }
+        private static float sqrt(float f) {
+            return Mth.sqrt(f);
+        }
+        
+*/ //? }
     }
 }

@@ -35,11 +35,13 @@ public enum AnimatedText {
     }
 
     public MutableComponent getText(
-        //#if FABRIC==1
+        //? if fabric {
         Component text,
-        //#else
-        //$$ Component text,
-        //#endif
+        //? } else {
+/*
+        Component text,
+        
+*/ //? }
     int offset) {
         switch (this) {
             case EMPTY -> {

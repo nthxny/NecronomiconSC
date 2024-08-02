@@ -33,7 +33,7 @@ public class NecUtilsAPI {
      * 
      * @author         ElocinDev
      */
-    //#if FABRIC==1
+    //? if fabric {
     public static Vec3 getLookVec(LivingEntity entity) {
         return MathUtils.getLookingVec(entity);
     }
@@ -68,7 +68,7 @@ public class NecUtilsAPI {
      * 
      * @author ElocinDev
      */
-    //#if FABRIC==1
+    //? if fabric {
     public static ResourceLocation getEntityIdentifier(Entity entity) { 
         return EntityType.getKey(entity.getType());
     }
@@ -97,11 +97,13 @@ public class NecUtilsAPI {
      */
     public static long getWorldTime(Level world) { 
         return 
-            //#if FABRIC==1
+            //? if fabric {
             world.getGameTime();
-            //#else
-            //$$ world.getGameTime();
-            //#endif
+            //? } else {
+/*
+            world.getGameTime();
+            
+*/ //? }
     }
 
     /**
@@ -115,12 +117,16 @@ public class NecUtilsAPI {
      */
     public static boolean isModLoaded(String modid) {
         return
-            //#if FABRIC==1
+            //? if fabric {
             net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
-            //#elif FORGE==1
-            //$$ net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
-            //#elif NEOFORGE==1
-            //$$ net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
-            //#endif
+            //? } elif forge {
+            /*
+            net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+             */
+            //? } elif neoforge {
+            /*
+            net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+             */
+            //? }
     }
 }

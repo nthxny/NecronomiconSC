@@ -1,32 +1,32 @@
 package elocindev.necronomicon.api.resource.v1;
 
-//#if NEOFORGE==0
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//#if FABRIC==0
+//? if !fabric {
+/*
 
-//$$ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-//$$ import net.minecraftforge.resource.PathPackResources;
-//$$ import net.minecraftforge.event.AddPackFindersEvent;
-//$$ import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.resource.PathPackResources;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.fml.ModList;
 
-//$$ import net.minecraft.network.chat.Component;
-//$$ import net.minecraft.server.packs.PackResources;
-//$$ import net.minecraft.server.packs.PackType;
-//$$ import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-//$$ import net.minecraft.server.packs.repository.Pack;
-//$$ import net.minecraft.server.packs.repository.PackSource;
-//$$ import net.minecraft.server.packs.repository.Pack.ResourcesSupplier;
-//$$ import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackResources;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.server.packs.repository.Pack.ResourcesSupplier;
+import net.minecraft.world.flag.FeatureFlagSet;
 
-//$$ import java.nio.file.Path;
-//$$ import java.util.function.Supplier;
-//$$ import org.jetbrains.annotations.Nullable;
-//$$ import java.util.function.Consumer;
+import java.nio.file.Path;
+import java.util.function.Supplier;
+import org.jetbrains.annotations.Nullable;
+import java.util.function.Consumer;
 
-//#else
+*/
+//else
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -73,32 +73,36 @@ public class ResourceBuilderAPI {
      * 
      * @author ElocinDev
      */
-    //#if FABRIC==1
+    //? if fabric {
     @Deprecated
-    //#endif
+    //? }
     public static void registerBuiltinPack(
-        //#if FABRIC==0
-        //$$ String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed  
-        //#endif
+        //? if !fabric {
+/*
+        String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed  
+        */
+//endif
     ) {
-        //#if FABRIC==0
-        //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
+        //? if !fabric {
+/*
+        var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
-        //$$ registerResourcePack(packType, () ->
-        //$$             Pack.create(
-        //$$                     modid,
-        //$$                     title,
-        //$$                     enabledDefault,
-        //$$                     (s) -> pack,
-        //$$                     new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
-        //$$                     packType,
-        //$$                     pos,
-        //$$                     fixed,
-        //$$                     PackSource.BUILT_IN));
-        //#else
+        registerResourcePack(packType, () ->
+                    Pack.create(
+                            modid,
+                            title,
+                            enabledDefault,
+                            (s) -> pack,
+                            new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
+                            packType,
+                            pos,
+                            fixed,
+                            PackSource.BUILT_IN));
+        */
+//else
 
         throw new UnsupportedOperationException("Forge only method");
-        //#endif
+        //? }
     }
 
     /**
@@ -119,34 +123,38 @@ public class ResourceBuilderAPI {
      * 
      * @author ElocinDev
      */
-    //#if FABRIC==1
+    //? if fabric {
     @Deprecated
-    //#endif
+    //? }
     public static void registerBuiltinPack(String modid
-        //#if FABRIC==0
+        //? if !fabric {
+/*
         //$$, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed, int packFormat
-        //#endif
+        */
+//endif
     ) {
-        //#if FABRIC==0
-        //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
+        //? if !fabric {
+/*
+        var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
-        //$$ registerResourcePack(packType, () ->
-        //$$             Pack.create(
-        //$$                     modid,
-        //$$                     title,
-        //$$                     enabledDefault,
-        //$$                     (s) -> pack,
-        //$$                     new Pack.Info(description, packFormat, FeatureFlagSet.of()),
-        //$$                     packType,
-        //$$                     pos,
-        //$$                     fixed,
-        //$$                     PackSource.BUILT_IN));
-        //#else
+        registerResourcePack(packType, () ->
+                    Pack.create(
+                            modid,
+                            title,
+                            enabledDefault,
+                            (s) -> pack,
+                            new Pack.Info(description, packFormat, FeatureFlagSet.of()),
+                            packType,
+                            pos,
+                            fixed,
+                            PackSource.BUILT_IN));
+        */
+//else
         throw new UnsupportedOperationException("Forge only method");
-        //#endif
+        //? }
     }
 
-    //#if FABRIC==1
+    //? if fabric {
     /**
      *  Registers a builtin resource pack. Should be called in the initializer of your mod.
      *  The pack will need to be added to the resourcepacks folder in your resources directory.
@@ -170,36 +178,40 @@ public class ResourceBuilderAPI {
         else if (enabledDefault) registerResourcePack(instance, modid, id, description, ResourcePackActivationType.DEFAULT_ENABLED);
         else registerResourcePack(instance, modid, id, description, ResourcePackActivationType.NORMAL);
     }
-    //#endif
+    //? }
     
     @SuppressWarnings("unused")
     private static void registerResourcePack(
-        //#if FABRIC==0
-        //$$ PackType packType, @Nullable Supplier<Pack> packSupplier
-        //#else
+        //? if !fabric {
+/*
+        PackType packType, @Nullable Supplier<Pack> packSupplier
+        */
+//else
         FabricLoader instance, String modid, String id, Component description, ResourcePackActivationType type
-        //#endif
+        //? }
     ) {
-        //#if FABRIC==0
-        //$$ if (packSupplier == null) return;
+        //? if !fabric {
+/*
+        if (packSupplier == null) return;
         
-        //$$ var bus = FMLJavaModLoadingContext.get().getModEventBus();
-        //$$ Consumer<AddPackFindersEvent> consumer = event -> {
-        //$$     if (event.getPackType() == packType) {
-        //$$         var pack = packSupplier.get();
-        //$$         if (pack != null) {
-        //$$             event.addRepositorySource(infoConsumer -> infoConsumer.accept(packSupplier.get()));
-        //$$         }
-        //$$     }
-        //$$ };
+        var bus = FMLJavaModLoadingContext.get().getModEventBus();
+        Consumer<AddPackFindersEvent> consumer = event -> {
+            if (event.getPackType() == packType) {
+                var pack = packSupplier.get();
+                if (pack != null) {
+                    event.addRepositorySource(infoConsumer -> infoConsumer.accept(packSupplier.get()));
+                }
+            }
+        };
 
-        //$$ bus.addListener(consumer);
-        //#else
+        bus.addListener(consumer);
+        */
+//else
         instance.getModContainer(modid)
                         .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(new ResourceLocation(modid, id),
                                 container, description, type))
                         .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack. "+modid, id));
-        //#endif
+        //? }
     }
 }
-//#endif
+//? }
